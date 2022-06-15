@@ -6,27 +6,28 @@
 #    By: mathis <mathis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/13 17:21:55 by mathis            #+#    #+#              #
-#    Updated: 2022/06/13 18:13:18 by mathis           ###   ########.fr        #
+#    Updated: 2022/06/15 16:50:54 by mathis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
+NAME1 = server
+NAME2 = client
 
-all : server client
+SRC = mt_utils.c
 
-server : server.o
-	gcc -Wall -Wextra -Werror -o server server.o
+all : $(NAME1) $(NAME2)
 
-server.o : server.c
-	gcc -Wall -Wextra -Werror -o server.o -c server.c
+$(NAME1) : $(NAME1:%=%.o) $(SRC:%.c=%.o)
+	$(CC) $(CFLAGS) $^ -o $@
 
-client : client.o
-	gcc -Wall -Wextra -Werror -o client client.o
+$(NAME2) : $(NAME2:%=%.o) $(SRC:%.c=%.o)
+	$(CC) $(CFLAGS) $^ -o $@
 
-client.o : client.c
-	gcc -Wall -Wextra -Werror -o client.o -c client.c
+%.o : %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
 	rm -f *.o
