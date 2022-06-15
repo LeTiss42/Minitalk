@@ -24,6 +24,8 @@ void	mt_servhandler(int signum, siginfo_t *info, void *ucontext)
 		res |= 128;
 	if (i == 8)
 	{
+		if (res == 0)
+			kill(info->si_pid, SIGUSR2);
 		write(1, &res, 1);
 		res = 0;
 		i = 0;

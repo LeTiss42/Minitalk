@@ -45,11 +45,18 @@ static void	mt_clienthandler(int sig_id)
 	(void) sig_id;
 }
 
+void	mt_endstr(int sig_id)
+{
+	(void) sig_id;
+	mt_putstr_fd("\nmessage bien reçu\n", 1);
+}
+
 int	main(int argc, char **argv)
 {
 	pid_t	pid_number;
 
 	signal(SIGUSR1, mt_clienthandler);
+	signal(SIGUSR2, mt_endstr);
 	if (argc != 3)
 	{
 		mt_putstr_fd("\n>>arguments invalides<<\n", 1);
