@@ -6,7 +6,7 @@
 /*   By: mathis <mathis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:34:50 by mathis            #+#    #+#             */
-/*   Updated: 2022/06/17 02:28:07 by mathis           ###   ########.fr       */
+/*   Updated: 2022/06/17 03:30:14 by mathis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,11 @@ int	main(int argc, char **argv)
 	{
 		mt_putstr_fd("\n>> arguments invalides <<\n", 1);
 		mt_putstr_fd("./client [PID du server] [message]\n", 1);
+		return (0);
+	}
+	if (mt_verifpid(argv[1]) == -1)
+	{
+		mt_putstr_fd("\n>> Pid invalide <<\n", 1);
 		return (0);
 	}
 	pid_number = mt_atoi(argv[1]);

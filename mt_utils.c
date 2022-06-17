@@ -6,7 +6,7 @@
 /*   By: mathis <mathis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 14:40:54 by mathis            #+#    #+#             */
-/*   Updated: 2022/06/17 02:14:31 by mathis           ###   ########.fr       */
+/*   Updated: 2022/06/17 03:28:13 by mathis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,19 @@ int	mt_atoi(const char *nptr)
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 		res = (res * 10) + (nptr[i++] - 48);
 	return (sign * res);
+}
+
+int	mt_verifpid(char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			i++;
+		else
+			return (-1);
+	}
+	return (1);
 }

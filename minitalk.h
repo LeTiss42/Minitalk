@@ -6,7 +6,7 @@
 /*   By: mathis <mathis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 14:20:52 by mathis            #+#    #+#             */
-/*   Updated: 2022/06/15 16:50:53 by mathis           ###   ########.fr       */
+/*   Updated: 2022/06/17 03:28:28 by mathis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@
 void	mt_putstr_fd(char *s, int fd);
 void	mt_putnbr_fd(int n, int fd);
 int		mt_atoi(const char *nptr);
+int		mt_verifpid(char *str);
 
 #endif
