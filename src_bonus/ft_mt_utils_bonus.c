@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mt_utils.c                                         :+:      :+:    :+:   */
+/*   ft_mt_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mathis <mathis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mravera <mravera@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 14:40:54 by mathis            #+#    #+#             */
-/*   Updated: 2022/06/17 03:28:13 by mathis           ###   ########.fr       */
+/*   Updated: 2022/06/17 17:48:42 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "ft_minitalk_bonus.h"
 
 void	mt_putstr_fd(char *s, int fd)
 {

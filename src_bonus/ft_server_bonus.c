@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_server_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mathis <mathis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mravera <mravera@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 14:31:25 by mathis            #+#    #+#             */
-/*   Updated: 2022/06/17 02:14:14 by mathis           ###   ########.fr       */
+/*   Updated: 2022/06/17 17:49:05 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "ft_minitalk_bonus.h"
 
 void	mt_servhandler(int signum, siginfo_t *info, void *ucontext)
 {
@@ -30,7 +30,7 @@ void	mt_servhandler(int signum, siginfo_t *info, void *ucontext)
 		res = 0;
 		i = 0;
 	}
-	usleep(10);
+	usleep(50);
 	kill(info->si_pid, SIGUSR1);
 }
 

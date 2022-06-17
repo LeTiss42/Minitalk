@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_minitalk_bonus.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mathis <mathis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mravera <mravera@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 14:20:52 by mathis            #+#    #+#             */
-/*   Updated: 2022/06/17 03:28:28 by mathis           ###   ########.fr       */
+/*   Updated: 2022/06/17 17:47:43 by mravera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#ifndef FT_MINITALK_BONUS_H
+# define FT_MINITALK_BONUS_H
 
 # include <stdio.h>
 # include <unistd.h>
