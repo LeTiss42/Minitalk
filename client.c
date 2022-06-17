@@ -6,13 +6,13 @@
 /*   By: mathis <mathis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:34:50 by mathis            #+#    #+#             */
-/*   Updated: 2022/06/15 16:50:49 by mathis           ###   ########.fr       */
+/*   Updated: 2022/06/17 02:28:07 by mathis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	mt_sendchar(unsigned char x, pid_t pid)
+void	mt_sendchar(unsigned char x, pid_t pid,int *test)
 {
 	int	i;
 
@@ -20,27 +20,33 @@ void	mt_sendchar(unsigned char x, pid_t pid)
 	while (i <= 8)
 	{
 		if ((x & 1) == 1)
-			kill(pid, SIGUSR1);
+			*test = kill(pid, SIGUSR1);
 		else
-			kill(pid, SIGUSR2);
+			*test = kill(pid, SIGUSR2);
 		i++;
 		x >>= 1;
+		if (*test == -1)
+			return ;
 		pause();
 	}
 }
 
-void	mt_sendstr(char *str, pid_t pid)
+void	mt_sendstr(char *str, pid_t pid, int *test)
 {
 	size_t	i;
 
 	i = 0;
 	while (str[i] != 0)
-		mt_sendchar((unsigned char)str[i++], pid);
-	mt_sendchar('\n', pid);
-	mt_sendchar(0, pid);
+	{
+		mt_sendchar((unsigned char)str[i++], pid, test);
+		if (*test == -1)
+			return ;
+	}
+	mt_sendchar('\n', pid, test);
+	mt_sendchar(0, pid, test);
 }
 
-static void	mt_clienthandler(int sig_id)
+void	mt_clienthandler(int sig_id)
 {
 	(void) sig_id;
 }
@@ -54,16 +60,22 @@ void	mt_endstr(int sig_id)
 int	main(int argc, char **argv)
 {
 	pid_t	pid_number;
+	int		*test;
+	int		val;
 
+	val = 1;
+	test = &val;
 	signal(SIGUSR1, mt_clienthandler);
 	signal(SIGUSR2, mt_endstr);
 	if (argc != 3)
 	{
-		mt_putstr_fd("\n>>arguments invalides<<\n", 1);
+		mt_putstr_fd("\n>> arguments invalides <<\n", 1);
 		mt_putstr_fd("./client [PID du server] [message]\n", 1);
 		return (0);
 	}
 	pid_number = mt_atoi(argv[1]);
-	mt_sendstr(argv[2], pid_number);
+	mt_sendstr(argv[2], pid_number, test);
+	if (*test == -1)
+		mt_putstr_fd("\n>> Pid invalide <<\n", 1);
 	return (0);
 }
